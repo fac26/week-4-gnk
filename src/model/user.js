@@ -10,12 +10,12 @@ function createUser(email, hash) {
   return insert_user.get({ email, hash });
 }
 
-const select_user_by_username = db.prepare(/*sql*/ `
+const select_user_by_email = db.prepare(/*sql*/ `
   SELECT id, email, hash, created_at FROM users WHERE email = ?
 `);
 
-function getUserByUsername(email) {
-  return select_user_by_username.get(email);
+function getUserByEmail(email) {
+  return select_user_by_email.get(email);
 }
 
-module.exports = { createUser, getUserByUsername };
+module.exports = { createUser, getUserByEmail };

@@ -1,10 +1,9 @@
 const { userForm } = require('../templates/forms');
 const { html } = require('../templates/html');
 const { navbar } = require('../templates/nav');
-
-// bcrypt
-// model/session
-// model/user
+const bcrypt = require('bcryptjs');
+const { createUser } = require('../model/user');
+const { createSession } = require('../model/session');
 
 // should this have a redirect if already logged in?
 function get(request, response) {
