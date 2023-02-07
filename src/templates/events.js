@@ -1,6 +1,8 @@
 function eventsTemplate(eventsFromDB) {
   const secretsUL = /*html*/ `
-    <ul>${eventsFromDB.map((event) => evTemplate(event)).join('')}</ul>
+    <ul class="event-list">${eventsFromDB
+      .map((event) => evTemplate(event))
+      .join('')}</ul>
     `;
   return secretsUL;
 }
