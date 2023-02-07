@@ -13,22 +13,22 @@ function get(request, response) {
   response.send(html(title, navBar, content));
 }
 
-// function post(request, response) {
-//   const { email, password } = request.body;
-//   const user = getUserByEmail(email);
-//   if (!email || !password || !user) {
-//     return response.status(400).send('<h1>Login Failed</h1>');
-//   } else {
-//     const session_id = createSession(user.id);
-//     response.cookie('sid', session_id, {
-//       signed: true,
-//       httpOnly: true,
-//       maxAge: 1000 * 60 * 60 * 24, //one day
-//       sameSite: 'lax',
-//     });
-//     // confirm redirect path
-//     response.redirect('/');
-//   }
-// }
+function post(request, response) {
+  const { email, password } = request.body;
+  const user = getUserByEmail(email);
+  if (!email || !password || !user) {
+    return response.status(400).send('<h1>Login Failed</h1>');
+  } else {
+    const session_id = createSession(user.id);
+    response.cookie('sid', session_id, {
+      signed: true,
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, //one day
+      sameSite: 'lax',
+    });
+    // confirm redirect path
+    response.redirect('/');
+  }
+}
 
-module.exports = { get };
+module.exports = { get, post };
