@@ -7,7 +7,8 @@ const { forms } = require('../../templates/forms');
 
 function get(request, response) {
   const title = 'Social Agenda | Log-in';
-  const content = response.send(); // forms
+  const content = // forms
+  response.send(); // forms
 }
 
 function post(request, response) {
