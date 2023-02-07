@@ -1,5 +1,5 @@
-const { navbar } = require('../../templates/nav');
-const { forms } = require('../../templates/forms');
+const { navbar } = require('../templates/nav');
+const { forms } = require('../templates/forms');
 // bcrypt
 // model/session
 // model/user
