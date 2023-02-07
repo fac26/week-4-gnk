@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -20,7 +22,7 @@ CREATE TABLE IF NOT EXISTS events (
   content TEXT,
   event_date DATETIME,
   event_address TEXT,
-  interested NUMBER,
+  interested NUMBER DEFAULT 0,
   user_id INTEGER REFERENCES users(id),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
