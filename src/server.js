@@ -12,6 +12,8 @@ const logOut = require('./routes/log-out');
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, 'public')));
+server.use(cookieParser(process.env.COOKIE_SECRET));
+
 server.get('/', home.get);
 server.get('/log-in', logIn.get);
 server.post('/log-in', logIn.post);

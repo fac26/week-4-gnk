@@ -1,9 +1,10 @@
 const { userForm } = require('../templates/forms');
 const { html } = require('../templates/html');
 const { navbar } = require('../templates/nav');
-// bcrypt
-// model/session
-// model/user
+const bcrypt = require('bcryptjs');
+const { getUserByEmail } = require('../model/user');
+const { createSession } = require('../model/session');
+
 
 function get(request, response) {
   const title = 'Social Agenda | Log-in';
@@ -17,18 +18,22 @@ function post(request, response) {
   const { email, password } = request.body;
   const user = getUserByEmail(email);
   if (!email || !password || !user) {
-    return response.status(400).send('<h1>Login Failed</h1>');
-  } else {
-    const session_id = createSession(user.id);
-    response.cookie('sid', session_id, {
-      signed: true,
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, //one day
-      sameSite: 'lax',
-    });
-    // confirm redirect path
-    response.redirect('/');
+    return response.status(400).send("<h1>Login failed</h1>");
   }
+  bcrypt.compare(password, user.hash).then((match) => {
+    if (!match) {
+      return response.status(400).send("<h1>Login failed</h1>");
+    } else {
+      const session_id = createSession(user.id);
+      response.cookie("sid", session_id, {
+        signed: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        sameSite: "lax",
+        httpOnly: true,
+      });
+      response.redirect(`/`);
+    }
+  });
 }
 
 module.exports = { get, post };
