@@ -3,7 +3,6 @@ const { html } = require('../templates/html');
 const { navbar } = require('../templates/nav');
 
 const dbEventsHandler = require('../model/event');
-const { createUser } = require('../model/user');
 
 function addEvent(req, res) {
   const title = 'Add event';
@@ -14,11 +13,10 @@ function addEvent(req, res) {
 }
 
 function postEvent(req, res) {
+  console.log(req.session);
   const { title, content, date, address } = req.body;
-  //
-  createUser('nn@test.com', '1234');
-  //
-  dbEventsHandler.createEvent(title, content, date, address, 1); //1 will be session user id
+  const userId = req.session.user_id;
+  dbEventsHandler.createEvent(title, content, date, address, userId); //1 will be session user id
 
   res.redirect('/');
 }
