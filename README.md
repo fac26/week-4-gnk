@@ -1,4 +1,4 @@
-# week-4-gnk: Social Agenda 🥳 :dance
+# week-4-gnk: Social Agenda 🥳 
 ------------
 
 Contributors : Georgia, Natalia, Konstantina
