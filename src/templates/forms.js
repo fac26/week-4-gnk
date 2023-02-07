@@ -27,7 +27,7 @@ function addEventForm(errors = {}, values = {}) {
     </div>
     <div class = "form-item">
         <label for="date">Event's date</label>
-        <input type="datetime-local" id="date" name="date">   
+        <input type="datetime-local" id="date" name="date" required>   
    </div>
    <div class = "form-item">
      <label for="address">Address:</label>
