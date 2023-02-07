@@ -20,7 +20,7 @@ function post(request, response) {
     response.status(400).send('<h1>Please choose a valid combination</h1>');
   } else {
     bcrypt.hash(password, 12).then((hash) => {
-      const user = createUser(username, hash);
+      const user = createUser(email, hash);
       const session_id = createSession(user.id);
       response.cookie('sid', session_id, {
         signed: true,
