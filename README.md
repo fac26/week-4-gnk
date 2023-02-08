@@ -1,20 +1,19 @@
-# Project Title: Social Agenda 🥳 
-
-
+# Project Title: Social Agenda 🥳
 
 ## a Node/Express server-rendered application with a SQLite database,
+
 Social Agenda is a web app that allows users to post their events. 💃
 
-#### Technical Requirements 
+#### Technical Requirements
 
 - [x] Express server
 - [x] Modular codebase
 - [x] SQLite database
 - [x] Hosted on Fly.io
-- [ ] Social Login (OAuth) using a 3rd party account: Github
+- [x] Social Login (OAuth) using a 3rd party account: Github
 - [ ] Server-side validation of user-submitted data
 - [ ] Error handling and informative error messages for the user
-- [x] Styled for a proffesional user-experience
+- [x] Styled for a professional user-experience
 
 #### User Stories
 
@@ -28,6 +27,11 @@ Social Agenda is a web app that allows users to post their events. 💃
 
 This application is hosted on Fly.io and can be accessed [here](https://fly.io/apps/frosty-sky-4626).
 
+#### Running the project locally
+
+1. `npm install`
+2. `run npm dev` (GitHub OAuth will only work on the deployed site)
+
 #### Contributing
 
 If you would like to contribute to this project, please reach out to the Contributors : Georgia, Natalia, Konstantina (fac26 cohort).
@@ -35,7 +39,3 @@ If you would like to contribute to this project, please reach out to the Contrib
 #### License
 
 This project is licensed under Apache 2.0.
-
-
-
-
