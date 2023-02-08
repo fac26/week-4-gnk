@@ -13,6 +13,7 @@ const signUp = require('./routes/sign-up');
 const logOut = require('./routes/log-out');
 
 const { getSession, removeSession } = require('./model/session');
+const { socialAuth } = require('./routes/social-auth');
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, 'public')));
@@ -28,6 +29,8 @@ server.post('/log-out', logOut.post);
 
 server.get('/add-event', addEvent); //add middleware
 server.post('/add-event', postEvent); //add middleware
+
+server.get('/auth', socialAuth);
 
 function sessions(req, res, next) {
   const sid = req.signedCookies.sid; //undefined if there is not a sid
