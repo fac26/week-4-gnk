@@ -1,6 +1,6 @@
 # Project Title: Social Agenda 🥳
 
-## a Node/Express server-rendered application with a SQLite database,
+## a Node/Express server-rendered application with a SQLite database
 
 Social Agenda is a web app that allows users to post their events. 💃
 
@@ -11,8 +11,8 @@ Social Agenda is a web app that allows users to post their events. 💃
 - [x] SQLite database
 - [x] Hosted on Fly.io
 - [x] Social Login (OAuth) using a 3rd party account: Github
-- [ ] Server-side validation of user-submitted data
-- [ ] Error handling and informative error messages for the user
+- [x] Server-side validation of user-submitted data
+- [x] Error handling and informative error messages for the user
 - [x] Styled for a professional user-experience
 
 #### User Stories
