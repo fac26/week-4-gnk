@@ -13,26 +13,37 @@ const LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=${client_i
 
 function get(request, response) {
   const title = 'Social Agenda | Log-in';
-  const navBar = navbar(false); // isAuth should be implemented
-  const content = userForm('/log-in');
-  const socialAuthBtn = `<button><a href=${LOGIN_URL}>Log in with GitHub</a></button>`;
+  const formTitle = 'Log in';
+  const isAuth = request.session ? true : false;
+  const navBar = navbar(isAuth); // isAuth should be implemented
+
+  const content = userForm('/log-in', formTitle);
+  const socialAuthBtn = `<button class="social-btn"><a href=${LOGIN_URL}>Log in with GitHub</a></button>`;
 
   response.send(html(title, navBar, content.concat(socialAuthBtn)));
 }
 
 function post(request, response) {
+  const isAuth = request.session ? true : false;
+
   const { email, password } = request.body;
   const user = getUserByEmail(email);
+
+  const errLayout = {
+    title: 'Social Agenda | Log-in',
+    navBar: navbar(isAuth),
+    content: userForm('/log-in', 'Login failed!'),
+  };
   if (!email || !password || !user) {
-    const title = 'Social Agenda | Log-in';
-    const navBar = navbar(false); // isAuth should be implemented
-    const content = userForm('/log-in');
-    const err = '<h1>Login failed</h1>';
-    return response.status(400).send(html(title, navBar, err.concat(content)));
+    return response
+      .status(400)
+      .send(html(errLayout.title, errLayout.navBar, errLayout.content));
   }
   bcrypt.compare(password, user.hash).then((match) => {
     if (!match) {
-      return response.status(400).send('<h1>Login failed</h1>');
+      return response
+        .status(400)
+        .send(html(errLayout.title, errLayout.navBar, errLayout.content));
     } else {
       const session_id = createSession(user.id);
       response.cookie('sid', session_id, {

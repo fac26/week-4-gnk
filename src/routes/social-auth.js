@@ -1,8 +1,9 @@
 const api = require('../api');
 
 function socialAuth(req, res) {
+  console.log('socialAuth');
   const code = req.query.code;
-  console.log(code)
+  console.log(code);
   api
     .getToken(code)
     .then(api.getUser)

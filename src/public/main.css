@@ -55,7 +55,39 @@
     justify-content: space-around;
     align-items: stretch;
 }
+h2{
+  text-align: center;
+}
+form {
+  max-width: 25rem;
+  margin: auto;
+}
   
-  
-  
+.form-item{
+  margin: 1rem 0;
+}
+
+.form-item label,
+.form-item input,
+.form-item textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-item input,
+.form-item textarea {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-item input:focus,
+.form-item textarea:focus {
+  outline-color: #00695c;
+}
+.social-btn{
+  margin: auto;
+  display: block;
+}  
   

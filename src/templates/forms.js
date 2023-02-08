@@ -1,5 +1,6 @@
-function userForm(path, errors = {}, values = {}) {
+function userForm(path, formTitle, errors = {}, values = {}) {
   return /*html*/ `
+        <h2>${formTitle}</h2>
         <form method="POST" action="${path}">
           <div class="form-item">
             <label for="email">email</label>
