@@ -5,12 +5,19 @@ const bcrypt = require('bcryptjs');
 const { getUserByEmail } = require('../model/user');
 const { createSession } = require('../model/session');
 
+// add social auth
+const dotnev = require('dotenv');
+dotnev.config();
+const client_id = process.env.CLIENT_ID;
+const LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=${client_id}`;
+
 function get(request, response) {
   const title = 'Social Agenda | Log-in';
   const navBar = navbar(false); // isAuth should be implemented
   const content = userForm('/log-in');
+  const socialAuthBtn = `<button><a href=${LOGIN_URL}>Log in with GitHub</a></button>`;
 
-  response.send(html(title, navBar, content));
+  response.send(html(title, navBar, content.concat(socialAuthBtn)));
 }
 
 function post(request, response) {
