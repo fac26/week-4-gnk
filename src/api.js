@@ -11,11 +11,7 @@ const TOKEN_URL = 'https://github.com/login/oauth/access_token';
 
 function getToken(code) {
   const body = { client_id, client_secret, code };
-<<<<<<< HEAD
-  console.log(JSON.strin);
-=======
-  console.log(JSON.stringify(body))
->>>>>>> 3bd1aa7fb0b6aa9c4e8be5e1752348a748f40f07
+
   return fetch(TOKEN_URL, {
     method: 'POST',
     body: JSON.stringify(body),

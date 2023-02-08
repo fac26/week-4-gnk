@@ -25,10 +25,10 @@ server.get('/log-in', logIn.get);
 server.post('/log-in', logIn.post);
 server.get('/sign-up', signUp.get);
 server.post('/sign-up', signUp.post);
-server.post('/log-out', confirmLogin, logOut.post);
+server.post('/log-out', logOut.post);
 
-server.get('/add-event', confirmLogin, addEvent); //add middleware
-server.post('/add-event', confirmLogin, postEvent); //add middleware
+server.get('/add-event', addEvent); //add middleware
+server.post('/add-event', postEvent); //add middleware
 
 server.get('/auth', socialAuth);
 

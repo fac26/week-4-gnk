@@ -4,7 +4,7 @@ const { eventsTemplate } = require('../templates/events');
 
 const eventsFromDB = require('../model/event');
 
-function get(req, res, next) {
+function get(req, res) {
   const isAuth = req.session ? req.session.id : '';
   const title = 'Social ';
   const navBar = navbar(isAuth);

@@ -1,4 +1,4 @@
-function userForm(path, formTitle, errors = {}, values = {}) {
+function userForm(path, formTitle) {
   return /*html*/ `
         <h2>${formTitle}</h2>
         <form method="POST" action="${path}">
@@ -15,7 +15,7 @@ function userForm(path, formTitle, errors = {}, values = {}) {
     `;
 }
 
-function addEventForm(errors = {}, values = {}) {
+function addEventForm() {
   return /*html*/ `
     <form method="POST" action="/add-event">
     <div class="form-item">

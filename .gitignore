@@ -1,7 +1,3 @@
 node_modules
 db.sqlite
-<<<<<<< HEAD
-.env
-=======
-.env
->>>>>>> 3bd1aa7fb0b6aa9c4e8be5e1752348a748f40f07
+.envd

@@ -11,13 +11,10 @@ function socialAuth(req, res) {
     .then(api.getUser)
     .then((user) => {
       const userName = user.login; //gitves the name of user from gitHub
+      console.log(userName);
       bcrypt.hash(code, 12).then((hash) => {
         const existingUser = getUserByEmail(userName);
-        let userId = existingUser.id;
-        if (!existingUser) {
-          userId = createUser(userName, hash);
-        }
-        console.log(userId);
+        let userId = existingUser?.id || createUser(userName, hash).id;
         const session_id = createSession(userId);
         res.cookie('sid', session_id, {
           signed: true,
