@@ -31,6 +31,13 @@ This application is hosted on Fly.io and can be accessed [here](https://fly.io/a
 
 1. `npm install`
 2. `run npm dev` (GitHub OAuth will only work on the deployed site)
+3. You'll be able to add events when logged in using the site's log-in feature (not yet under gitHub OAuth). 
+4. The `/add-event` route is not yet protected and can be accessed by all. 
+
+#### OAuth Notes
+
+OAuth is currently under construction and does not yet display the 'Add Event' panel, despite being logged-in via OAuth withg GitHub. 
+*OAuth will only work on the deployed site*
 
 #### Contributing
 
