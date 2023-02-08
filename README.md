@@ -10,7 +10,7 @@ Social Agenda is a web app that allows users to post their events. 💃
 - [x] Express server
 - [x] Modular codebase
 - [x] SQLite database
-- [ ] Hosted on Fly.io
+- [x] Hosted on Fly.io
 - [ ] Social Login (OAuth) using a 3rd party account: Github
 - [ ] Server-side validation of user-submitted data
 - [ ] Error handling and informative error messages for the user
