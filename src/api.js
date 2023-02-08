@@ -9,7 +9,7 @@ const TOKEN_URL = "https://github.com/login/oauth/access_token";
 
 function getToken(code) {
   const body = { client_id, client_secret, code };
-  console.log(body);
+  console.log(JSON.stringify(body));
   return fetch(TOKEN_URL, {
     method: "POST",
     body: JSON.stringify(body),
@@ -31,9 +31,9 @@ function getUser(token) {
 
 function getJson(response) {
   if (!response.ok) {
-    console.log(response)
-    const error = new Error("HTTP Error");
-    error.status = response.statusCode;
+    console.log(response);
+    const error = new Error('HTTP Error');
+    error.status = response.status;
     throw error;
   }
   return response.json();
