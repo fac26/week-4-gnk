@@ -17,22 +17,14 @@ function createEvent(title, content, event_date, event_address, user_id) {
 }
 
 const select_event_by_id = db.prepare(/*sql*/ `
-  SELECT id, interested FROM events WHERE id = ?
+  SELECT id, user_id FROM events WHERE id = ?
 `);
 
 function getEventByID(id) {
   return select_event_by_id.get(id);
 }
-// const update_interested = db.prepare(/*sql*/ `
-//   UPDATE events SET interested FROM events WHERE id = ?
-// `);
 
-// function updateInterested(id) {
-//   let interestedINdb = getEventByID(id).interested; //2
-//   interestedINdb++;
-
-//   return update_interested.get({ interested: interestedINdb, id });
-// }
+//add user_id to table
 const select_all_events = db.prepare(/*sql*/ `
     SELECT 
         id,
@@ -40,7 +32,7 @@ const select_all_events = db.prepare(/*sql*/ `
         content,
         event_date,
         event_address,
-        interested
+        user_id
     FROM events
     
 `);
@@ -49,4 +41,13 @@ function listEvents() {
   return select_all_events.all();
 }
 
-module.exports = { createEvent, getEventByID, listEvents };
+//delete
+const delete_from_DB = db.prepare(/*sql*/ `
+DELETE FROM events WHERE id=?
+
+`);
+function deleteEventFromDB(id) {
+  delete_from_DB.run(id);
+}
+
+module.exports = { createEvent, getEventByID, listEvents, deleteEventFromDB };

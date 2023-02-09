@@ -21,8 +21,7 @@ CREATE TABLE IF NOT EXISTS events (
   title TEXT,
   content TEXT,
   event_date DATETIME,
-  event_address TEXT,
-  interested NUMBER DEFAULT 0,
+  event_address TEXT
   user_id INTEGER REFERENCES users(id),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
