@@ -15,7 +15,7 @@ jobs:
       - name: Upload environment file
         uses: actions/upload-env-file@v1
         with:
-          env-file: ${{ secrets.ENV_FILE }}
+          ENV_FILE: ${{ secrets.ENV_FILE }}
       - name: Deploy app
         uses: superfly/flyctl-actions/setup-flyctl@master
         env:
