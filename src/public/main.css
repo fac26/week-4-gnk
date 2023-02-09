@@ -48,6 +48,7 @@
     text-decoration: none;
 }
 .auth-nav button,
+.delete-btn,
 .main-nav li a:hover, 
 .main-nav li a:active,
 .main-nav li a.active,
@@ -55,6 +56,15 @@
 .auth-nav li a:active,
 .auth-nav li a.active{
     color: #ffeb3b;
+}
+
+.delete-btn{
+    width: 8rem;
+    height: 3rem;
+    font-size: inherit;
+    color: #01695c;
+    border: white;
+    cursor: pointer;
 }
   
 .event-list {
