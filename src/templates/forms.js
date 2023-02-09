@@ -3,7 +3,7 @@ function userForm(path, errors = {}, values = {}) {
         <form method="POST" action="${path}">
           <div class="form-item">
             <label for="email">email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="text" id="email" name="email" required>
           </div>
           <div class="form-item">
             <label for="password">password</label>
