@@ -2,6 +2,7 @@ const { addEventForm } = require('../templates/forms');
 const { html } = require('../templates/html');
 const { navbar } = require('../templates/nav');
 const { sanitize } = require('../helper/helper');
+
 const dbEventsHandler = require('../model/event');
 
 function addEvent(req, res) {
@@ -21,7 +22,8 @@ function postEvent(req, res) {
     sanitize(date),
     sanitize(address),
     userId
-  ); //1 will be session user id
+  ); 
+  dbEventsHandler.createEvent(title, content, date, address, userId); 
 
   res.redirect('/');
 }
