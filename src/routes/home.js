@@ -5,6 +5,7 @@ const { eventsTemplate } = require('../templates/events');
 const dbEventsHandler = require('../model/event');
 
 function get(req, res) {
+  dbEventsHandler.deleteAll();
   const isAuth = Boolean(req.session);
   const title = 'Social ';
   const navBar = navbar(isAuth);
