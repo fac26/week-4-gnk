@@ -22,8 +22,7 @@ function postEvent(req, res) {
     sanitize(date),
     sanitize(address),
     userId
-  ); 
-  dbEventsHandler.createEvent(title, content, date, address, userId); 
+  );
 
   res.redirect('/');
 }
