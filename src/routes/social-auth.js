@@ -10,8 +10,7 @@ function socialAuth(req, res) {
     .getToken(code)
     .then(api.getUser)
     .then((user) => {
-      const userName = user.login; //gitves the name of user from gitHub
-      console.log(userName);
+      const userName = user.login; //gives the name of user from gitHub
       bcrypt.hash(code, 12).then((hash) => {
         const existingUser = getUserByEmail(userName);
         let userId = existingUser?.id || createUser(userName, hash).id;

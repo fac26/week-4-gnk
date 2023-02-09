@@ -13,7 +13,6 @@ function addEvent(req, res) {
 }
 
 function postEvent(req, res) {
-  console.log(req.session);
   const { title, content, date, address } = req.body;
   const userId = req.session.user_id;
   dbEventsHandler.createEvent(title, content, date, address, userId); //1 will be session user id
@@ -21,4 +20,12 @@ function postEvent(req, res) {
   res.redirect('/');
 }
 
-module.exports = { addEvent, postEvent };
+function deleteEvent(req, res) {
+  const incomeEventId = req.params.id;
+  const eventFromDB = dbEventsHandler.getEventByID(incomeEventId);
+  if (req.user.id === eventFromDB.user_id) {
+    dbEventsHandler.deleteEventFromDB(incomeEventId);
+  }
+  res.redirect('/');
+}
+module.exports = { addEvent, postEvent, deleteEvent };
