@@ -34,11 +34,20 @@
     
     cursor: pointer;
 }
-
+.auth-nav button{
+    background: none;
+    border: none;
+    width: 7rem;
+    height: 2rem;
+    color: white;
+    font-size: inherit;
+    cursor: pointer;
+}
 .main-nav li a, .auth-nav li a{    
     color: white;
     text-decoration: none;
 }
+.auth-nav button,
 .main-nav li a:hover, 
 .main-nav li a:active,
 .main-nav li a.active,
