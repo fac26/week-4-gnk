@@ -4,6 +4,7 @@ const { navbar } = require('../templates/nav');
 const bcrypt = require('bcryptjs');
 const { createUser, getUserByEmail } = require('../model/user');
 const { createSession } = require('../model/session');
+const { sanitize } = require('../helper/helper');
 
 // should this have a redirect if already logged in?
 function get(request, response) {
@@ -25,14 +26,14 @@ function post(request, response) {
       .status(400)
       .send(html(errLayout.title, errLayout.navBar, errLayout.content));
   } else {
-    bcrypt.hash(password, 12).then((hash) => {
+    bcrypt.hash(sanitize(password), 12).then((hash) => {
       const existingUser = getUserByEmail(email);
       if (existingUser) {
         return response
           .status(400)
           .send(html(errLayout.title, errLayout.navBar, errLayout.content));
       }
-      const user = createUser(email, hash);
+      const user = createUser(sanitize(email), hash);
       const session_id = createSession(user.id);
       response.cookie('sid', session_id, {
         signed: true,

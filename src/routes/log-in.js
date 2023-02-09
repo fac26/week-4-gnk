@@ -4,6 +4,7 @@ const { navbar } = require('../templates/nav');
 const bcrypt = require('bcryptjs');
 const { getUserByEmail } = require('../model/user');
 const { createSession } = require('../model/session');
+const { sanitize } = require('../helper/helper');
 
 // add social auth
 const dotnev = require('dotenv');
@@ -14,20 +15,20 @@ const LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=${client_i
 function get(request, response) {
   const title = 'Social Agenda | Log-in';
   const formTitle = 'Log in';
-  const isAuth = request.session ? true : false;
+  const isAuth = Boolean(request.session);
+  if (isAuth) {
+    return response.redirect('/');
+  }
   const navBar = navbar(isAuth); // isAuth should be implemented
-
   const content = userForm('/log-in', formTitle);
   const socialAuthBtn = `<button class="social-btn"><a href=${LOGIN_URL}>Log in with GitHub</a></button>`;
-
   response.send(html(title, navBar, content.concat(socialAuthBtn)));
 }
 
 function post(request, response) {
-  const isAuth = request.session ? true : false;
-
+  const isAuth = Boolean(request.session);
   const { email, password } = request.body;
-  const user = getUserByEmail(email);
+  const user = getUserByEmail(sanitize(email));
 
   const errLayout = {
     title: 'Social Agenda | Log-in',
@@ -39,7 +40,7 @@ function post(request, response) {
       .status(400)
       .send(html(errLayout.title, errLayout.navBar, errLayout.content));
   }
-  bcrypt.compare(password, user.hash).then((match) => {
+  bcrypt.compare(sanitize(password), user.hash).then((match) => {
     if (!match) {
       return response
         .status(400)
