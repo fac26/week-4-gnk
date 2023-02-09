@@ -47,8 +47,8 @@
     color: white;
     text-decoration: none;
 }
-.auth-nav button,
-.delete-btn,
+.auth-nav button:hover,
+.delete-btn:hover,
 .main-nav li a:hover, 
 .main-nav li a:active,
 .main-nav li a.active,
