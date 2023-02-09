@@ -49,5 +49,17 @@ DELETE FROM events WHERE id=?
 function deleteEventFromDB(id) {
   delete_from_DB.run(id);
 }
+const delete_all_events = db.prepare(/*sql*/ `
+DELETE FROM events 
 
-module.exports = { createEvent, getEventByID, listEvents, deleteEventFromDB };
+`);
+function deleteAll() {
+  delete_all_events.run();
+}
+module.exports = {
+  createEvent,
+  getEventByID,
+  listEvents,
+  deleteEventFromDB,
+  deleteAll,
+};
